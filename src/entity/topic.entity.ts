@@ -19,10 +19,6 @@ export class Topic {
   @Column({ type: "varchar", length: 50, nullable: true })
   topic_title!: string;
 
-  @ManyToMany(type => Model)
-  @JoinTable()
-  models: Model[] | undefined;
-
   @OneToMany(
     type => Question,
     question => question.topic

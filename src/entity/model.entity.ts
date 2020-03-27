@@ -1,5 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  ManyToMany,
+  JoinTable
+} from "typeorm";
 import { Company } from "./company.entity";
+import { Topic } from "./topic.entity";
 
 // Create tables
 
@@ -16,4 +24,8 @@ export class Model {
     company => company.models
   )
   company: Company[] | undefined;
+
+  @ManyToMany(type => Topic)
+  @JoinTable()
+  topics: Topic[] | undefined;
 }

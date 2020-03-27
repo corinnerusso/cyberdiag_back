@@ -1,5 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  ManyToMany,
+  JoinTable
+} from "typeorm";
 import { Topic } from "./topic.entity";
+import { Answer } from "./answer.entity";
 
 // Create tables
 
@@ -19,4 +27,8 @@ export class Question {
     topic => topic.questions
   )
   topic: Topic | undefined;
+
+  @ManyToMany(type => Answer)
+  @JoinTable()
+  answers: Answer[] | undefined;
 }
