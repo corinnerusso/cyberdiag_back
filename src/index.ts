@@ -16,7 +16,7 @@ async function startServer() {
   UserController(app);
 
   // Démarrage du serveur (port 3000, on peut le changer) une fois que tout est correctement initialisé
-  app.listen(3000, () => console.log("Express server is running"));
+  app.listen(3005, () => console.log("Express server is running"));
 }
 
 startServer();

@@ -2,14 +2,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 // Create tables
 
-@Entity("user")
-export class User {
+@Entity("answer")
+export class Answer {
   @PrimaryGeneratedColumn({ type: "int" })
-  userId!: number;
+  answerId!: number;
 
   @Column({ type: "varchar", length: 50, nullable: true })
-  lastname!: string;
+  answer_title!: string;
 
-  @Column({ type: "varchar", length: 50, nullable: true })
-  firstname!: string;
+  @Column({ type: "int", nullable: true })
+  answer_quote!: string;
 }
