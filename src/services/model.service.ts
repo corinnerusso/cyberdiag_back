@@ -7,9 +7,15 @@ import { Model } from "../entity/model.entity";
 export class ModelService {
   private repository = getCustomRepository(ModelRepository);
 
+  relations = [
+    "company",
+    "topics",
+    "topics.questions",
+    "topics.questions.answers"
+  ];
   async getAll() {
     return await this.repository.find({
-      relations: ["company", "topics", "answers"]
+      relations: this.relations
     });
   }
 }
