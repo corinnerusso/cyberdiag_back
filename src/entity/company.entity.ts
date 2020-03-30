@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { Model } from "./model.entity";
+import { Survey } from "./survey.entity";
 // Create tables
 
 @Entity("company")
@@ -15,4 +16,10 @@ export class Company {
     model => model.company
   )
   models: Model[] | undefined;
+
+  @OneToMany(
+    type => Survey,
+    survey => survey.company
+  )
+  surveys: Survey[] | undefined;
 }
