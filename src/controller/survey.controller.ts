@@ -20,5 +20,11 @@ export const SurveyController = (app: Application) => {
     res.send(await surveyService.post(req.body));
   });
 
+  surveyRouter.put("/:id", async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id, 10);
+    const survey = req.body;
+
+    res.send(await surveyService.update(survey, id));
+  });
   app.use("/surveys", surveyRouter);
 };

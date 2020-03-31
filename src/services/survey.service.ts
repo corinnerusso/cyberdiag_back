@@ -20,4 +20,8 @@ export class SurveyService {
   async post(survey: Survey) {
     return await this.repository.save(survey);
   }
+
+  async update(survey: Survey, id: number) {
+    return await this.repository.update(id, survey);
+  }
 }
