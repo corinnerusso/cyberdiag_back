@@ -16,5 +16,9 @@ export const SurveyController = (app: Application) => {
     res.send(await surveyService.getAll());
   });
 
+  surveyRouter.post("/", async (req: Request, res: Response) => {
+    res.send(await surveyService.post(req.body));
+  });
+
   app.use("/surveys", surveyRouter);
 };

@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinTable
+} from "typeorm";
 import { Model } from "./model.entity";
 import { Survey } from "./survey.entity";
 // Create tables
@@ -21,5 +27,6 @@ export class Company {
     type => Survey,
     survey => survey.company
   )
+  @JoinTable()
   surveys: Survey[] | undefined;
 }
