@@ -16,6 +16,11 @@ export const SurveyController = (app: Application) => {
     res.send(await surveyService.getAll());
   });
 
+  surveyRouter.get("/:id", async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    res.send(await surveyService.getById(id));
+  });
+
   surveyRouter.post("/", async (req: Request, res: Response) => {
     res.send(await surveyService.post(req.body));
   });
@@ -25,6 +30,11 @@ export const SurveyController = (app: Application) => {
     const survey = req.body;
 
     res.send(await surveyService.update(survey, id));
+  });
+
+  surveyRouter.delete("/:id", async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id, 10);
+    res.send(await surveyService.deleteById(id));
   });
   app.use("/surveys", surveyRouter);
 };

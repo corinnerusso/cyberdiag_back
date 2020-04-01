@@ -17,11 +17,19 @@ export class SurveyService {
     });
   }
 
+  async getById(id: number) {
+    return await this.repository.findOne(id);
+  }
+
   async post(survey: Survey) {
     return await this.repository.save(survey);
   }
 
   async update(survey: Survey, id: number) {
     return await this.repository.update(id, survey);
+  }
+
+  async deleteById(id: number) {
+    return await this.repository.delete(id);
   }
 }

@@ -11,7 +11,7 @@ import { Company } from "./company.entity";
 @Entity("survey")
 export class Survey {
   @PrimaryGeneratedColumn({ type: "int" })
-  surveyId!: number;
+  id!: number;
 
   @Column({ type: "varchar", length: 250, nullable: true })
   survey_title!: string;
