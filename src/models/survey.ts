@@ -1,7 +1,7 @@
 export class Survey {
   // Class and constructor
 
-  public id!: string;
+  public id!: number;
   public survey_title!: string;
   public client_name!: string;
   public creation_date!: Date;
