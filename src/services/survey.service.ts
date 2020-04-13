@@ -18,7 +18,7 @@ export class SurveyService {
   }
 
   async getById(id: number) {
-    return await this.repository.findOne(id);
+    return await this.repository.findOne(id, { relations: this.relations });
   }
 
   async post(survey: Survey) {

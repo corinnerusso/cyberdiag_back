@@ -19,9 +19,13 @@ export class Topic {
   @Column({ type: "varchar", length: 50, nullable: true })
   topic_title!: string;
 
+  @Column({ type: "int", nullable: true })
+  topic_max_quote!: number;
+
   @OneToMany(
     type => Question,
     question => question.topic
   )
   questions: Question[] | undefined;
+  static topicId: any;
 }

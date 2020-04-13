@@ -8,6 +8,7 @@ import { ModelController } from "./controller/model.controller";
 import { TopicController } from "./controller/topic.controller";
 import { QuestionController } from "./controller/question.controller";
 import { SurveyController } from "./controller/survey.controller";
+import { SubmissionController } from "./controller/submission.controller";
 async function startServer() {
   // Récupération de l'application initiale
   const app = express();
@@ -21,6 +22,7 @@ async function startServer() {
   TopicController(app);
   QuestionController(app);
   SurveyController(app);
+  SubmissionController(app);
 
   // Démarrage du serveur (port 3000, on peut le changer) une fois que tout est correctement initialisé
   app.listen(3005, () => console.log("Express server is running"));
