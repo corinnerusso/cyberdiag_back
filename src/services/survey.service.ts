@@ -9,13 +9,18 @@ export class SurveyService {
   private repository = getCustomRepository(SurveyRepository);
   companyRepository = getCustomRepository(CompanyRepository);
 
-  relations = ["company"];
+  relations = ["company",
+    "company.models",
+    "company.models.topics",
+    "company.models.topics.questions",
+    "company.models.topics.questions.answers"];
 
   async getAll() {
     return await this.repository.find({
       relations: this.relations
     });
   }
+
 
   async getById(id: number) {
     return await this.repository.findOne(id, { relations: this.relations });

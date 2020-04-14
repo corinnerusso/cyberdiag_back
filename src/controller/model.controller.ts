@@ -16,5 +16,7 @@ export const ModelController = (app: Application) => {
     res.send(await modelService.getAll());
   });
 
+
+
   app.use("/models", modelRouter);
 };
