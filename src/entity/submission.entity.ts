@@ -14,8 +14,15 @@ export class Submission {
   surveyId!: number;
 
   @Column({ type: "int", nullable: true })
-  answerId!: number;
+  modelId!: number;
 
   @Column({ type: "varchar", length: 250, nullable: true })
   topicId!: string;
+
+  @Column({ type: "int", nullable: true })
+  questionId!: number;
+
+  @Column({ type: "int", nullable: true })
+  answerId!: number;
+
 }
