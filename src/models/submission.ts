@@ -8,6 +8,7 @@ export class Submission {
   public topicId!: string;
   public questionId!: string;
   public answerId!: number;
+  public answerQuote!: number;
 
   constructor(input: Submission) {
     Object.assign(this, input);

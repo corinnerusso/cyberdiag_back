@@ -25,4 +25,6 @@ export class Submission {
   @Column({ type: "int", nullable: true })
   answerId!: number;
 
+  @Column({ type: "int", nullable: true })
+  answerQuote!: number;
 }
