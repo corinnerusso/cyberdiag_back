@@ -9,6 +9,9 @@ export class Submission {
   public questionId!: string;
   public answerId!: number;
   public answerQuote!: number;
+  public surveyTitle!: string;
+  public topicTitle!: string;
+  public topicQuote!: number;
 
   constructor(input: Submission) {
     Object.assign(this, input);

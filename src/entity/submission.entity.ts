@@ -27,4 +27,13 @@ export class Submission {
 
   @Column({ type: "int", nullable: true })
   answerQuote!: number;
+
+  @Column({ type: "varchar", length: 250, nullable: true })
+  surveyTitle!: number;
+
+  @Column({ type: "varchar", length: 250, nullable: true })
+  topicTitle!: number;
+
+  @Column({ type: "int", nullable: true })
+  topicQuote!: number;
 }

@@ -18,17 +18,13 @@ export const SubmissionController = (app: Application) => {
 
   submissionRouter.get("/:id", async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
-    res.send(await submissionService.getById(id));
+    res.send(await submissionService.getOneId(id));
   });
-
   submissionRouter.post("/", async (req: Request, res: Response) => {
     res.send(await submissionService.post(req.body));
   });
 
-  submissionRouter.delete("/:id", async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id, 10);
-    res.send(await submissionService.deleteById(id));
-  });
+
 
   app.use("/submit", submissionRouter);
 };

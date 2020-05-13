@@ -1,30 +1,39 @@
-import { getCustomRepository, createQueryBuilder } from "typeorm";
+import { getCustomRepository, createQueryBuilder, getRepository } from "typeorm";
 import { SubmissionRepository } from "../repository/submission.repository";
 import { Submission } from "../entity/submission.entity";
-import { Topic } from "../entity/topic.entity";
+
 
 // Ici, on gère la logique avec typeorm notamment
 
 export class SubmissionService {
   private repository = getCustomRepository(SubmissionRepository);
 
-  relations = ["topic"];
+
   async getAll() {
-    const submit = createQueryBuilder("submission")
-      .innerJoinAndSelect(Topic, "topic", "topic.topicId=submission.topicId")
-      .getMany();
-    return await submit;
+    return await this.repository.find();
   }
 
-  async getById(id: number) {
-    return await this.repository.findOne(id);
+  //route to get all the datas with reference surveyId as the id path
+  async getOneId(id: number) {
+
+    const survey = getRepository(Submission)
+      .createQueryBuilder("survey")
+
+      .select("survey.topicId")
+      .addSelect("survey.topicTitle")
+      .addSelect('survey.surveyId')
+      .addSelect("survey.topicQuote")
+      .addSelect("survey.surveyTitle")
+      .addSelect("SUM(survey.answerQuote)", "sum")
+      .where("surveyId=:id", { id: id })
+      .groupBy("survey.topicId")
+      .getRawMany();
+    return await survey;
   }
+
 
   async post(submission: Submission) {
     return await this.repository.save(submission);
   }
 
-  async deleteById(id: number) {
-    return await this.repository.delete(id);
-  }
 }
