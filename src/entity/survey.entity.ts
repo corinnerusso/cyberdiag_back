@@ -22,6 +22,9 @@ export class Survey {
   @Column({ type: "date", nullable: true })
   creation_date!: string;
 
+  @Column({ type: "int", nullable: true })
+  userId!: number;
+
   @ManyToOne(
     type => Company,
     Company => Company.surveys
