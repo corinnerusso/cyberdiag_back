@@ -6,9 +6,15 @@ import { User } from "../entity/user.entity";
 
 export class UserService {
   private repository = getCustomRepository(UserRepository);
-
+  relations = [
+    "surveys"
+  ]
   async getAll() {
     return await this.repository.find();
+  }
+
+  async getDashboard() {
+    return await this.repository.find({ relations: this.relations });
   }
 
   async getById(id: number) {

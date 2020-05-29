@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Survey } from "./survey.entity"
 // Create tables
 
 @Entity("user")
@@ -30,4 +30,11 @@ export class User {
 
   @Column({ type: "int", default: 0 })
   isAdmin!: number;
+
+  @OneToMany(
+    type => Survey,
+    survey => survey.user
+  )
+  surveys: Survey[] | undefined;
+  static topicId: any;
 }

@@ -2,11 +2,10 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  ManyToMany,
-  JoinTable,
+
   OneToMany
 } from "typeorm";
-import { Model } from "./model.entity";
+
 import { Question } from "./question.entity";
 
 // Create tables
