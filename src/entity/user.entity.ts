@@ -23,5 +23,11 @@ export class User {
   cieName!: string;
 
   @Column({ type: "varchar", length: 255, nullable: true })
-  phoneNum!: string;
+  phoneNumber!: string;
+
+  @Column({ type: "boolean", default: false })
+  CGU!: boolean;
+
+  @Column({ type: "int", default: 0 })
+  isAdmin!: number;
 }

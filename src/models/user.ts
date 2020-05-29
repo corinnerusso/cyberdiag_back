@@ -7,7 +7,9 @@ export class User {
   public email!: string;
   public password!: string;
   public cieName!: string;
-  public phoneNum!: string
+  public phoneNumber!: string;
+  public CGU!: boolean;
+  public isAdmin!: number
 
   constructor(input: User) {
     Object.assign(this, input);
