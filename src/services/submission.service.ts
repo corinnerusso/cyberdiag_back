@@ -21,7 +21,7 @@ export class SubmissionService {
 
       .select("survey.topicId")
       .addSelect("survey.topicTitle")
-      .addSelect('survey.surveyId')
+
       .addSelect("survey.topicQuote")
       .addSelect("survey.surveyTitle")
       .addSelect("SUM(survey.answerQuote)", "sum")

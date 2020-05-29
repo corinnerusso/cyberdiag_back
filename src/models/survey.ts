@@ -5,6 +5,7 @@ export class Survey {
   public survey_title!: string;
   public client_name!: string;
   public creation_date!: Date;
+  public userId!: number;
 
   constructor(input: Survey) {
     Object.assign(this, input);
