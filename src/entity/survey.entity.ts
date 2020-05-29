@@ -6,6 +6,7 @@ import {
   JoinTable
 } from "typeorm";
 import { Company } from "./company.entity";
+import { User } from "./user.entity"
 // Create tables
 
 @Entity("survey")
@@ -20,10 +21,11 @@ export class Survey {
   client_name!: string;
 
   @Column({ type: "date", nullable: true })
-  creation_date!: string;
+  survey_creation_date!: string;
 
-  @Column({ type: "int", nullable: true })
-  userId!: number;
+
+
+
 
   @ManyToOne(
     type => Company,
@@ -31,4 +33,10 @@ export class Survey {
   )
   @JoinTable()
   company: Company[] | undefined;
+
+  @ManyToOne(
+    type => User,
+    user => user.surveys
+  )
+  user: User | undefined;
 }

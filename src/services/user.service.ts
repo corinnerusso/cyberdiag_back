@@ -6,9 +6,15 @@ import { User } from "../entity/user.entity";
 
 export class UserService {
   private repository = getCustomRepository(UserRepository);
-
+  relations = [
+    "surveys"
+  ]
   async getAll() {
     return await this.repository.find();
+  }
+
+  async getDashboard() {
+    return await this.repository.find({ relations: this.relations });
   }
 
   async getById(id: number) {
@@ -19,8 +25,8 @@ export class UserService {
     return await this.repository.save(user);
   }
 
-  async update(user: User, id: number) {
-    return await this.repository.update(id, user);
+  async update(user: User, userId: number) {
+    return await this.repository.update(userId, user);
   }
 
   async deleteById(id: number) {
