@@ -21,7 +21,9 @@ export class Survey {
   client_name!: string;
 
   @Column({ type: "date", nullable: true })
-  creation_date!: string;
+  survey_creation_date!: string;
+
+
 
 
 

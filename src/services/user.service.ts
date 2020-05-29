@@ -25,8 +25,8 @@ export class UserService {
     return await this.repository.save(user);
   }
 
-  async update(user: User, id: number) {
-    return await this.repository.update(id, user);
+  async update(user: User, userId: number) {
+    return await this.repository.update(userId, user);
   }
 
   async deleteById(id: number) {

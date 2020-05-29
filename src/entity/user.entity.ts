@@ -20,16 +20,23 @@ export class User {
   password!: string;
 
   @Column({ type: "varchar", length: 255, nullable: true })
-  cieName!: string;
+  cie_name!: string;
 
   @Column({ type: "varchar", length: 255, nullable: true })
-  phoneNumber!: string;
+  phone_number!: string;
 
   @Column({ type: "boolean", default: false })
   CGU!: boolean;
 
   @Column({ type: "int", default: 0 })
   isAdmin!: number;
+
+  @Column({ type: "date", nullable: true })
+  user_creation_date!: string;
+
+  @Column({ type: "varchar", length: 500, nullable: true })
+  comments!: string;
+
 
   @OneToMany(
     type => Survey,

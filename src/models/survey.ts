@@ -4,11 +4,12 @@ export class Survey {
   public id!: number;
   public survey_title!: string;
   public client_name!: string;
-  public creation_date!: Date;
+  public survey_creation_date!: Date;
+
 
 
   constructor(input: Survey) {
     Object.assign(this, input);
-    this.creation_date = new Date(this.creation_date);
+    this.survey_creation_date = new Date(this.survey_creation_date);
   }
 }
