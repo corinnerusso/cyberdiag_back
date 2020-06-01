@@ -1,4 +1,5 @@
-import express, { Router, Request, Response, Application } from "express";
+import { commonController } from './../core/common_functions.controller';
+import { Application, Router, Request, Response } from 'express';
 import { UserService } from "../services/user.service";
 
 /**
@@ -9,8 +10,10 @@ import { UserService } from "../services/user.service";
 // On ajoute ici toutes les routes de l'app
 
 export const UserController = (app: Application) => {
-  const userRouter: Router = express.Router();
+  // const userRouter: Router = express.Router();
   const userService = new UserService();
+  let userRouter = Router();
+  userRouter = commonController(userService, userRouter);
 
   userRouter.get("/", async (req: Request, res: Response) => {
     res.send(await userService.getAll());
@@ -29,12 +32,12 @@ export const UserController = (app: Application) => {
     res.send(await userService.post(req.body));
   });
 
-  userRouter.put("/:id", async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id, 10);
-    const user = req.body;
+  // userRouter.put("/:id", async (req: Request, res: Response) => {
+  //   const id = parseInt(req.params.id, 10);
+  //   const user = req.body;
 
-    res.send(await userService.update(user, id));
-  });
+  //   res.send(await userService.update(user, id));
+  // });
 
   userRouter.delete("/:id", async (req: Request, res: Response) => {
     const id = parseInt(req.params.id, 10);

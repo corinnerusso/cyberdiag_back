@@ -1,7 +1,7 @@
 export class User {
   // Class and constructor
 
-  public userId!: string;
+  public id!: number;
   public lastname!: string;
   public firstname!: string;
   public email!: string;
