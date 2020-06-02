@@ -13,7 +13,11 @@ export class UserService extends AbstractService {
   protected repository = getCustomRepository(UserRepository);
   protected tokenRepository = getCustomRepository(TokenRepository);
 
-  relationsEntities = [];
+  relationsEntities = ["surveys"];
+
+  // async getDashboard() {
+  //   return await this.repository.find({ relations: this.relationsEntities });
+  // }
 
   async getAll() {
     return await this.repository.find({ relations: this.relationsEntities });
@@ -55,7 +59,7 @@ export class UserService extends AbstractService {
     const userUpdated = await this.repository.update(id, user);
     // tslint:disable-next-line: max-line-length
     return this.repository.findOne(id, {
-      select: ['email', 'lastname', 'role', 'activated', 'id'],
+      select: ['email', 'firstname', 'role', 'activated', 'id'],
       relations: this.relationsEntities,
     },
     );
@@ -63,7 +67,7 @@ export class UserService extends AbstractService {
 
   async getMe(id: number) {
     return await this.repository.findOne(id, {
-      select: ['email', 'lastname', 'role', 'activated', 'id'],
+      select: ['email', 'firstname', 'role', 'activated', 'id'],
       relations: this.relationsEntities,
     });
   }
@@ -71,14 +75,10 @@ export class UserService extends AbstractService {
 
   // export class UserService {
   //   private repository = getCustomRepository(UserRepository);
-  relations = [
-    "surveys"
-  ]
 
 
-  async getDashboard() {
-    return await this.repository.find({ relations: this.relations });
-  }
+
+
 
   // async getById(id: number) {
   //   return await this.repository.findOne(id);

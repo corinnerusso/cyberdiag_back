@@ -59,12 +59,12 @@ export class AuthService {
 
         const user = await this.userRepository.findOne({
             where: { email },
-            select: ['id', 'password', 'email', 'activated', 'lastname', 'is_admin', 'role'],
+            select: ['id', 'password', 'email', 'activated', 'firstname', 'is_admin', 'role'],
         });
 
         // Si il n'y a pas eu d'activation de compte, renvoi l'erreur NOT ACTIVE
         // Si il y a activated true => continue la méthode signin
-        if (!user?.activated) {
+        if (user?.activated === false) {
             throw new Error('NOT ACTIVE');
         }
 
@@ -85,7 +85,7 @@ export class AuthService {
         delete user.password;
 
         const token = sign( // from jsonwebtoken
-            { id: user.id, user: user.lastname, email: user.email }, // id, user, role dans sign PAS DE PASSWORD !
+            { id: user.id, user: user.firstname, email: user.email }, // id, user, role dans sign PAS DE PASSWORD !
             secret); // PrivateKey à entrer comme une variable environnement
         return { token, user };
     }

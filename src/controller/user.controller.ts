@@ -19,9 +19,9 @@ export const UserController = (app: Application) => {
     res.send(await userService.getAll());
   });
 
-  userRouter.get("/dashboard", async (req: Request, res: Response) => {
-    res.send(await userService.getDashboard());
-  });
+  // userRouter.get("/dashboard", async (req: Request, res: Response) => {
+  //   res.send(await userService.getDashboard());
+  // });
 
   userRouter.get("/:id", async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
