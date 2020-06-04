@@ -23,10 +23,6 @@ export class Survey {
   @Column({ type: "date", nullable: true })
   survey_creation_date!: string;
 
-
-
-
-
   @ManyToOne(
     type => Company,
     Company => Company.surveys
@@ -36,7 +32,9 @@ export class Survey {
 
   @ManyToOne(
     type => User,
-    user => user.surveys
+    User => User.surveys
   )
-  user: User | undefined;
+  // user: User | undefined;
+  @JoinTable()
+  user: User[] | undefined;
 }
