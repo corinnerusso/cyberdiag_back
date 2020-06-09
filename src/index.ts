@@ -3,6 +3,9 @@ import "reflect-metadata";
 import express from "express";
 import loaders from "./loaders";
 
+import { AuthController } from './controller/auth.controller';
+
+
 import { UserController } from "./controller/user.controller";
 import { ModelController } from "./controller/model.controller";
 import { TopicController } from "./controller/topic.controller";
@@ -23,8 +26,9 @@ async function startServer() {
   QuestionController(app);
   SurveyController(app);
   SubmissionController(app);
+  AuthController(app);
 
-  // Démarrage du serveur (port 3000, on peut le changer) une fois que tout est correctement initialisé
+  // Démarrage du serveur (port 3005, on peut le changer) une fois que tout est correctement initialisé
   app.listen(3005, () => console.log("Express server is running"));
 }
 

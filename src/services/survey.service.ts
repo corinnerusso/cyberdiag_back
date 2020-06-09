@@ -1,7 +1,9 @@
-import { getCustomRepository } from "typeorm";
+import { getCustomRepository, getRepository, Equal } from "typeorm";
 import { SurveyRepository } from "../repository/survey.repository";
 import { Survey } from "../entity/survey.entity";
 import { CompanyRepository } from "../repository/company.repository";
+import { User } from "../entity/user.entity";
+import { UserRepository } from "../repository/user.repository";
 
 // Ici, on gère la logique avec typeorm notamment
 
@@ -9,7 +11,9 @@ export class SurveyService {
   private repository = getCustomRepository(SurveyRepository);
   companyRepository = getCustomRepository(CompanyRepository);
 
-  relations = ["company",
+  relations = [
+    "user",
+    "company",
     "company.models",
     "company.models.topics",
     "company.models.topics.questions",
@@ -24,6 +28,20 @@ export class SurveyService {
 
   async getById(id: number) {
     return await this.repository.findOne(id, { relations: this.relations });
+  }
+
+  // async getOneId(id: number) {
+  //   return await this.repository.findOne({ user: { id: id } }, { relations: ["user", "company", "company.models"] });
+  // }
+  async getOneId(id: number) {
+    const survey = getRepository(Survey)
+      .createQueryBuilder("survey")
+      .innerJoinAndSelect("survey.user", "user")
+      .innerJoinAndSelect("survey.company", "company")
+      .innerJoinAndSelect("company.models", "models")
+      .where("userId=:id", { id: id })
+      .getMany()
+    return await survey;
   }
 
   async post(survey: Survey) {

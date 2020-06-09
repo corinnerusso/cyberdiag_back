@@ -3,7 +3,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   ManyToOne,
-  JoinTable
+  JoinTable,
+  JoinColumn
 } from "typeorm";
 import { Company } from "./company.entity";
 import { User } from "./user.entity"
@@ -23,9 +24,8 @@ export class Survey {
   @Column({ type: "date", nullable: true })
   survey_creation_date!: string;
 
-
-
-
+  @Column({ type: 'boolean', default: false })
+  has_a_survey!: boolean;
 
   @ManyToOne(
     type => Company,
@@ -34,9 +34,9 @@ export class Survey {
   @JoinTable()
   company: Company[] | undefined;
 
-  @ManyToOne(
-    type => User,
-    user => user.surveys
-  )
-  user: User | undefined;
+  @ManyToOne(type => User, User => User.surveys)
+  // user: User | undefined;
+
+  @JoinTable()
+  user: User[] | undefined;
 }

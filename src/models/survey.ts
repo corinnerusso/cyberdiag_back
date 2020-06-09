@@ -5,6 +5,8 @@ export class Survey {
   public survey_title!: string;
   public client_name!: string;
   public survey_creation_date!: Date;
+  public user_id!: number;
+  public has_a_survey!: boolean
 
 
 
