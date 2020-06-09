@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinTable } from "typeorm";
 import { Survey } from "./survey.entity"
 // Create tables
 
@@ -61,6 +61,7 @@ export class User {
     type => Survey,
     survey => survey.user
   )
+  @JoinTable()
   surveys: Survey[] | undefined;
-  static topicId: any;
+  // static topicId: any;
 }

@@ -25,6 +25,10 @@ export const SurveyController = (app: Application) => {
     const id = parseInt(req.params.id);
     res.send(await surveyService.getOneId(id));
   });
+  surveyRouter.get("/user/:id", async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    res.send(await surveyService.getOneId(id));
+  });
   surveyRouter.post("/", async (req: Request, res: Response) => {
     res.send(await surveyService.post(req.body));
   });
