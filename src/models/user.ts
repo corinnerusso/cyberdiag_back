@@ -8,7 +8,7 @@ export class User {
   public password!: string;
   public cie_name!: string;
   public phone_number!: string;
-  public CGU!: boolean;
+  public legal_terms!: boolean;
   public isAdmin!: number;
   public user_creation_date!: Date;
   public comments!: string

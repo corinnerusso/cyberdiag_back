@@ -33,7 +33,7 @@ export class User {
   phone_number!: string;
 
   @Column({ type: "boolean", default: false })
-  CGU!: boolean;
+  legal_terms!: boolean;
 
   /*Admin role initiated to false by default*/
   @Column({ type: "int", default: 0 })

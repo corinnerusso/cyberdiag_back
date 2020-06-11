@@ -34,7 +34,7 @@ export class Survey {
   @JoinTable()
   company: Company[] | undefined;
 
-  @ManyToOne(type => User, User => User.surveys)
+  @ManyToOne(type => User, User => User.surveys, { onDelete: "CASCADE" })
   // user: User | undefined;
 
   @JoinTable()
