@@ -59,8 +59,8 @@ export class UserService extends AbstractService {
     const userUpdated = await this.repository.update(id, user);
     // tslint:disable-next-line: max-line-length
     return this.repository.findOne(id, {
-      select: ['email', 'firstname', 'role', 'activated', 'id'],
-      relations: this.relationsEntities,
+      select: ['email', 'firstname', 'lastname', 'password', 'phone_number'],
+
     },
     );
   }

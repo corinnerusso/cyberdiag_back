@@ -33,7 +33,7 @@ export class SurveyService {
   // async getOneId(id: number) {
   //   return await this.repository.findOne({ user: { id: id } }, { relations: ["user", "company", "company.models"] });
   // }
-  async getOneId(id: number) {
+  async getUserInfos(id: number) {
     const survey = getRepository(Survey)
       .createQueryBuilder("survey")
       .innerJoinAndSelect("survey.user", "user")
