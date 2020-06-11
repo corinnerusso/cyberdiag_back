@@ -3,7 +3,7 @@ export class Submission {
 
   public submissionId!: number;
   public userId!: number;
-  public surveyId!: number;
+
   public modelId!: number;
   public topicId!: string;
   public questionId!: string;

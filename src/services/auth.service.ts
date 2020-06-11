@@ -35,7 +35,7 @@ export class AuthService {
 
         // Crypte le password
         user.password = await hash(user.password); // from argon2
-        // user.avatar = 'uploads/avatar-1580898492028.png';
+
 
         user = this.userRepository.create(user); // Initialisation d'un objet user
         user = await this.userRepository.save(user); // sauvegarder le user

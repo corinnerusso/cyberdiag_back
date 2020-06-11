@@ -4,10 +4,12 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinTable,
-  JoinColumn
+  OneToMany
+
 } from "typeorm";
 import { Company } from "./company.entity";
-import { User } from "./user.entity"
+import { User } from "./user.entity";
+import { Submission } from "./submission.entity"
 // Create tables
 
 @Entity("survey")
@@ -34,9 +36,17 @@ export class Survey {
   @JoinTable()
   company: Company[] | undefined;
 
-  @ManyToOne(type => User, User => User.surveys)
+  @ManyToOne(type => User, User => User.surveys, { onDelete: "CASCADE" })
   // user: User | undefined;
 
   @JoinTable()
   user: User[] | undefined;
+
+  @OneToMany(
+    type => Submission,
+    submission => submission.survey
+  )
+  @JoinTable()
+  submissions: Submission[] | undefined;
+
 }
