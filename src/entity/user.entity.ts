@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinTable } from "typeorm";
 import { Survey } from "./survey.entity"
+import { Submission } from "./submission.entity";
 // Create tables
 
 //Dertermine which are the different roles of a user
@@ -63,5 +64,7 @@ export class User {
   )
   @JoinTable()
   surveys: Survey[] | undefined;
-  // static topicId: any;
+
+
+
 }

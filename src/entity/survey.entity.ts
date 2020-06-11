@@ -4,10 +4,12 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinTable,
-  JoinColumn
+  OneToMany
+
 } from "typeorm";
 import { Company } from "./company.entity";
-import { User } from "./user.entity"
+import { User } from "./user.entity";
+import { Submission } from "./submission.entity"
 // Create tables
 
 @Entity("survey")
@@ -39,4 +41,12 @@ export class Survey {
 
   @JoinTable()
   user: User[] | undefined;
+
+  @OneToMany(
+    type => Submission,
+    submission => submission.survey
+  )
+  @JoinTable()
+  submissions: Submission[] | undefined;
+
 }
