@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany, JoinTable } from "typeorm";
 import { Survey } from "./survey.entity"
-import { Submission } from "./submission.entity";
-// Create tables
+
+// Create user entity
 
 //Dertermine which are the different roles of a user
 export enum UserRole {
@@ -54,17 +54,17 @@ export class User {
   })
   role!: UserRole;
 
-  // Pas from false to true when a user has clicked on the link of the confirmation mail
+  // Change from false to true when a user has clicked on the link of the confirmation mail
   @Column({ type: 'boolean', default: false })
   activated!: boolean;
 
+
+  //Join survey entity withone to many link
   @OneToMany(
     type => Survey,
     survey => survey.user
   )
   @JoinTable()
   surveys: Survey[] | undefined;
-
-
 
 }

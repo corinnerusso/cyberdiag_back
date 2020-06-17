@@ -1,6 +1,6 @@
 import { Connection, MysqlError } from "mysql";
 
-// Fait la liaison et gestion des erreurs
+// Do the link and catch errors
 
 export class DbHandler {
   static instance: DbHandler;

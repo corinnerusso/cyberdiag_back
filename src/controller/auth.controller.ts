@@ -3,13 +3,9 @@ import { AuthService } from './../services/auth.service';
 
 const jwt = require('jsonwebtoken');
 import * as config from '../config/jwt-secret';
-/**
- * Ce controller vous servira de modèle pour construire vos différent controller
- * Le controlle rest la partie de l'application qui est en charge de la reception
- * des requetes http.
- *
- * @param app l'application express
- */
+
+//The controller is the part of the application that is in charge of receiving http requests.
+
 export const AuthController = (app: Application) => {
 
     const authRouter: Router = express.Router();
@@ -19,7 +15,7 @@ export const AuthController = (app: Application) => {
         const user = req.body;
         try {
             await authService.signup(user);
-            /* res.sendStatus(204); */
+
             const token = jwt.sign({ id: user.id }, config.JWT_SECRET, {
                 expiresIn: 86400, // expires in 24 hours
             });
@@ -57,7 +53,9 @@ export const AuthController = (app: Application) => {
         const token = req.params.token;
         try {
             await authService.isConfirmed(token);
-            // Si le user a activé le mail de confirmation, il est redirigé vers la page de connexion du front
+            //If the user has activated the link t=in the confirmation mail, he will be redirected 
+            //to the login page
+
         } catch (error) {
             res.status(400).send('Lien invalide !');
         }
@@ -72,9 +70,7 @@ export const AuthController = (app: Application) => {
                 expiresIn: 86400, // expires in 24 hours
             });
 
-            /* res.set('access-control-expose-headers', 'JWT_TOKEN'); */
-            /* res.set('JWT_TOKEN', token); */
-            /*  res.send(user); */
+
             res.status(200).send({ auth: true, user, token });
         } catch (error) {
             if (error.message === 'NOT ACTIVE') {

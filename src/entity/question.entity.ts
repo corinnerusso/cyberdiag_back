@@ -9,7 +9,7 @@ import {
 import { Topic } from "./topic.entity";
 import { Answer } from "./answer.entity";
 
-// Create tables
+// Create question entity
 
 @Entity("question")
 export class Question {
@@ -22,12 +22,16 @@ export class Question {
   @Column({ type: "varchar", length: 500, nullable: true })
   comments!: string;
 
+
+  //Join question entity with many to one link
   @ManyToOne(
     type => Topic,
     topic => topic.questions
   )
   topic: Topic | undefined;
 
+
+  //Join answer entity with many to many link
   @ManyToMany(type => Answer)
   @JoinTable()
   answers: Answer[] | undefined;

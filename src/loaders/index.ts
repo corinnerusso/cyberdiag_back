@@ -2,7 +2,7 @@ import expressLoader from "./express";
 import typeOrmLoader from "./typeorm";
 import { Application } from "express";
 
-// Initialise les loaders
+// Initialize loaders
 
 export default async (app: Application) => {
   console.log("Express start init");
