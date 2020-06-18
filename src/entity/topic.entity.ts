@@ -8,7 +8,7 @@ import {
 
 import { Question } from "./question.entity";
 
-// Create tables
+// Create topic entity
 
 @Entity("topic")
 export class Topic {
@@ -21,6 +21,8 @@ export class Topic {
   @Column({ type: "int", nullable: true })
   topic_max_quote!: number;
 
+
+  //Join question entity with one to many link
   @OneToMany(
     type => Question,
     question => question.topic

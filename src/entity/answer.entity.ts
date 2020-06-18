@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-// Create tables
+// Create answer entity
 
 @Entity("answer")
 export class Answer {

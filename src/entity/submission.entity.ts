@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinTable } from "typeorm";
 import { Survey } from './survey.entity'
 
-// Create tables
+// Create submission entity
 
 @Entity("submission")
 export class Submission {
@@ -10,8 +10,6 @@ export class Submission {
 
   @Column({ type: "int", nullable: true })
   userId!: number;
-
-
 
   @Column({ type: "int", nullable: true })
   modelId!: number;
@@ -37,9 +35,8 @@ export class Submission {
   @Column({ type: "int", nullable: true })
   topicQuote!: number;
 
+  //Join suvey entity with many to one link
   @ManyToOne(type => Survey, Survey => Survey.submissions, { onDelete: "CASCADE" })
-  // user: User | undefined;
-
   @JoinTable()
   survey: Survey[] | undefined;
 

@@ -7,7 +7,8 @@ import {
 } from "typeorm";
 import { Model } from "./model.entity";
 import { Survey } from "./survey.entity";
-// Create tables
+
+// Create company entity
 
 @Entity("company")
 export class Company {
@@ -17,12 +18,16 @@ export class Company {
   @Column({ type: "varchar", length: 50, nullable: true })
   company_type!: string;
 
+
+  //Join model entity with one to many link
   @OneToMany(
     type => Model,
     model => model.company
   )
   models: Model[] | undefined;
 
+
+  //Join survey entity with one to many link
   @OneToMany(
     type => Survey,
     survey => survey.company

@@ -1,4 +1,7 @@
 import { ObjectLiteral, Repository } from 'typeorm';
+import { User } from '../entity/user.entity'
+
+import { hash } from 'argon2';
 
 export abstract class AbstractService {
 
@@ -23,6 +26,9 @@ export abstract class AbstractService {
     }
 
     async update(idElement: any, element: ObjectLiteral) {
+        if (element === User) {
+            element.password = hash(element.password)
+        }
         return await this.repository.update(idElement, element);
     }
 

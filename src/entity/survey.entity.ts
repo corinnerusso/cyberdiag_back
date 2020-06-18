@@ -10,7 +10,7 @@ import {
 import { Company } from "./company.entity";
 import { User } from "./user.entity";
 import { Submission } from "./submission.entity"
-// Create tables
+// Create survey entity
 
 @Entity("survey")
 export class Survey {
@@ -29,6 +29,8 @@ export class Survey {
   @Column({ type: 'boolean', default: false })
   has_a_survey!: boolean;
 
+
+  //Join company entity with many to one link
   @ManyToOne(
     type => Company,
     Company => Company.surveys
@@ -36,12 +38,14 @@ export class Survey {
   @JoinTable()
   company: Company[] | undefined;
 
-  @ManyToOne(type => User, User => User.surveys, { onDelete: "CASCADE" })
-  // user: User | undefined;
 
+  //Join survey entity with many to one link
+  @ManyToOne(type => User, User => User.surveys, { onDelete: "CASCADE" })
   @JoinTable()
   user: User[] | undefined;
 
+
+  //Join submission entity with one to many link
   @OneToMany(
     type => Submission,
     submission => submission.survey

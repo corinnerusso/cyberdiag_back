@@ -62,13 +62,15 @@ export class AuthService {
             select: ['id', 'password', 'email', 'activated', 'firstname', 'is_admin', 'role'],
         });
 
-        // Si il n'y a pas eu d'activation de compte, renvoi l'erreur NOT ACTIVE
-        // Si il y a activated true => continue la méthode signin
+        //If there has been no account activation, returns the error NOT ACTIVE
+        // If activated is true => continues the signin method
+
+
         if (user?.activated === false) {
             throw new Error('NOT ACTIVE');
         }
 
-        if (!user) { // Si pas user
+        if (!user) { // If no user
             throw labelError;
         }
 
@@ -90,11 +92,13 @@ export class AuthService {
         return { token, user };
     }
 
-    // Si le token est confirmé, on appelle la méthode getByvalue qui
-    // s'occupe de récupérer le user par le token.
-    // Si le userToken n'existe pas : retourne Lien invalide
-    // Sinon appelle méthode activUserAccount qui s'occupe de modifier
-    // le champs activ dans la table User a TRUE
+    //If the token is confirmed, we call the getByValue method
+    //which retrieves the user via the token.
+    //If userToken doesn't exist : returns unvailable link.
+    //Otherwise it calls activUserAccount method which modifies the acitvated field
+    //in user entity and passes it to TRUE.
+
+
     async isConfirmed(token: string) {
         const userToken = await this.tokenService.getByValue(token);
         if (!userToken) {

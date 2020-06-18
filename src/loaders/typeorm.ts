@@ -1,5 +1,7 @@
 import { createConnection } from "typeorm";
 
+//Here we add all the entities connected to the database
+
 // import * as ormconfig from "../ormconfig.json";
 import { DATABASE } from '../config/config-db';
 import { Company } from "../entity/company.entity";
@@ -12,8 +14,7 @@ import { Submission } from "../entity/submission.entity";
 import { User } from '../entity/user.entity';
 import { Token } from '../entity/token.entity';
 
-// Ici on met toutes les connections avec la BDD, et on oublie pas de rajouter les diverses 'entities'
-// à l'intérieur des crochets pour les déclarer en quelque sorte.
+
 
 export default async () => {
   await createConnection({
@@ -34,5 +35,6 @@ export default async () => {
       Submission
     ],
     synchronize: true
+    //all the changes will be realised when they are saved
   });
 };
