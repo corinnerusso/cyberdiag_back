@@ -22,7 +22,8 @@ export class Question {
   @Column({ type: "varchar", length: 500, nullable: true })
   comments!: string;
 
-
+  @Column({ type: "int", nullable: true })
+  questionNumber!: number;
   //Join question entity with many to one link
   @ManyToOne(
     type => Topic,
