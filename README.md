@@ -35,7 +35,7 @@ Ex : export const JWT_SECRET = 'azerTYTYUIOP12693193';
 
 You can choose to put the config in the gitignore file.
 
-4. Run 
+5. Run 
 ```sh
 npm run start:dev
 ```
