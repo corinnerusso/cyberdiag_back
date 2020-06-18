@@ -9,7 +9,7 @@ import {
 import { Company } from "./company.entity";
 import { Topic } from "./topic.entity";
 
-// Create mdeol entity
+// Create model entity
 
 @Entity("model")
 export class Model {

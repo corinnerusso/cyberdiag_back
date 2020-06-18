@@ -41,10 +41,10 @@ export const AuthController = (app: Application) => {
             res.status(200).send({ auth: true, token, user });
         } catch (error) {
             if (error.message === 'ALREADY_EXIST') {
-                res.send({ Erreur: 'Informations déjà utilisées' });
-                res.status(409).send('Informations déjà utilisées');
+                res.send({ Erreur: 'Datas already used' });
+                res.status(409).send('Datas already used');
             } else {
-                res.status(409).send('Erreur lors de l\'inscription');
+                res.status(409).send('Erreur when create a new account');
             }
         }
     });
@@ -57,7 +57,7 @@ export const AuthController = (app: Application) => {
             //to the login page
 
         } catch (error) {
-            res.status(400).send('Lien invalide !');
+            res.status(400).send('Not available link !');
         }
     });
 
@@ -74,9 +74,9 @@ export const AuthController = (app: Application) => {
             res.status(200).send({ auth: true, user, token });
         } catch (error) {
             if (error.message === 'NOT ACTIVE') {
-                res.status(409).send('Le compte n\'est pas activé.');
+                res.status(409).send('This account is not activated');
             } else {
-                res.status(400).send('L\'email ou le mot de passe est erroné');
+                res.status(400).send('Wrong email or password');
             }
         }
     });

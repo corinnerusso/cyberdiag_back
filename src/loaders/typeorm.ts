@@ -35,5 +35,6 @@ export default async () => {
       Submission
     ],
     synchronize: true
+    //all the changes will be realised when they are saved
   });
 };
