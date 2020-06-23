@@ -1,0 +1,1 @@
+export const DATABASE = { host: 'localhost', username: 'root', password: 'Cyberens33*', database: 'cyberdiag' };

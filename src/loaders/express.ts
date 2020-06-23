@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { Application } from "express";
 
-//gestion du cors & body-parser
+//Deal with cors & body-parser
 
 export default async (app: Application) => {
   app.get("/status", (req, res) => {
