@@ -59,7 +59,7 @@ export class AuthService {
 
         const user = await this.userRepository.findOne({
             where: { email },
-            select: ['id', 'password', 'email', 'activated', 'firstname', 'is_admin', 'role'],
+            select: ['id', 'password', 'email', 'activated', 'firstname', 'is_admin', 'role', 'connected'],
         });
 
         //If there has been no account activation, returns the error NOT ACTIVE
