@@ -59,6 +59,9 @@ export class User {
   activated!: boolean;
 
 
+  @Column({ type: 'boolean', default: false })
+  connected!: boolean;
+
   //Join survey entity withone to many link
   @OneToMany(
     type => Survey,
